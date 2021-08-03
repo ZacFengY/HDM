@@ -12,6 +12,10 @@ export default defineConfig({
   nodeModulesTransform: {
     type: 'none',
   },
+  externals: {
+    dac: 'window.dssAuthClient',
+  },
+  // scripts: [{ src: '/dss-auth-client.js' }, { src: '/loginVerification.js' }],
   fastRefresh: {},
   dynamicImport: {},
   chainWebpack(config) {

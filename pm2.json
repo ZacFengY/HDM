@@ -1,0 +1,14 @@
+{
+  "apps": [
+    {
+      "name": "HDM",
+      "script": "server.js",
+      "log_date_format": "YYYY-MM-DD HH:mm:ss",
+      "instances": 1,
+      "min_uptime": "60s",
+      "max_restarts": 50,
+      "merge_logs": true,
+      "exec_interpreter": "node"
+    }
+  ]
+}

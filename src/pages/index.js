@@ -17,4 +17,6 @@ const Home = () => {
   )
 }
 
+// Home.wrappers = ['@/wrappers/auth']
+
 export default Home
