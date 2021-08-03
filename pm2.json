@@ -1,7 +1,7 @@
 {
   "apps": [
     {
-      "name": "HDM",
+      "name": "hdm-node-app",
       "script": "server.js",
       "log_date_format": "YYYY-MM-DD HH:mm:ss",
       "instances": 1,
