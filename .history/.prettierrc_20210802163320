@@ -1,0 +1,16 @@
+{
+  "singleQuote": true,
+  "jsxSingleQuote": true,
+  "trailingComma": "all",
+  "printWidth": 100,
+  "semi": false,
+  "requireConfig": true,
+  "arrowParens": "avoid",
+  "vueIndentScriptAndStyle": true,
+  "overrides": [
+    {
+      "files": ".prettierrc",
+      "options": { "parser": "json" }
+    }
+  ]
+}

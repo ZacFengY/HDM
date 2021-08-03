@@ -1,0 +1,14 @@
+// const express = require('express')
+// const proxy = require('http-proxy-middleware')
+
+// const localProxy = proxy({ target: 'http://localhost:5000' })
+// const serverProxy = proxy({ target: 'http://localhost:8080' })
+
+const app = express()
+
+app.use(express.static('./build'))
+app.use('/static', localProxy)
+app.use('/*', serverProxy)
+app.listen(5000, () => {
+  console.log('server run in port 5000')
+})

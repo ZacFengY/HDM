@@ -1,0 +1,23 @@
+{
+  "workbench.iconTheme": "material-icon-theme",
+  "workbench.colorTheme": "Dracula",
+  "window.zoomLevel": 1,
+  "editor.renderControlCharacters": true,
+  "editor.renderWhitespace": "all",
+  "[javascript]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "editor.suggestSelection": "first",
+  "editor.formatOnSave": true,
+  "editor.codeActionsOnSave": {
+    "source.organizeImports": true
+  },
+  "commentTranslate.targetLanguage": "zh-CN",
+  "prettier.arrowParens": "avoid",
+  "prettier.jsxSingleQuote": true,
+  "prettier.requireConfig": true,
+  "prettier.semi": false,
+  "prettier.singleQuote": true,
+  "prettier.vueIndentScriptAndStyle": true,
+  "eslint.alwaysShowStatus": true
+}

@@ -1,0 +1,50 @@
+{
+  "name": 'HDM',
+
+  "private": true,
+  "scripts": {
+    "dev": "UMI_UI=1 umi dev",
+    "start": "MOCK=none umi dev",
+    "build": "umi build",
+    "server": "node ./src/www",
+    "postinstall": "umi generate tmp",
+    "prettier": "prettier --write '**/*.{js,jsx,tsx,ts,less,md,json}'",
+    "test": "umi-test",
+    "test:coverage": "umi-test --coverage"
+  },
+  "gitHooks": {
+    "pre-commit": "lint-staged"
+  },
+  "lint-staged": {
+    "*.{js,jsx,less,md,json}": [
+      "prettier --write"
+    ],
+    "*.ts?(x)": [
+      "prettier --parser=typescript --write"
+    ]
+  },
+  "dependencies": {
+    "@ant-design/pro-layout": "^6.5.0",
+    "antd": "^4.16.8",
+    "react": "17.x",
+    "react-dom": "17.x",
+    "umi": "^3.4.25"
+  },
+  "devDependencies": {
+    "@types/react": "^17.0.0",
+    "@types/react-dom": "^17.0.0",
+    "@umijs/preset-react": "1.x",
+    "@umijs/preset-ui": "^2.2.9",
+    "@umijs/test": "^3.5.14",
+    "eslint": "7.31.0",
+    "eslint-config-airbnb-base": "^14.2.1",
+    "eslint-config-next": "11.0.1",
+    "eslint-config-prettier": "^8.3.0",
+    "eslint-plugin-prettier": "^3.4.0",
+    "lint-staged": "^10.0.7",
+    "mockjs": "^1.1.0",
+    "prettier": "^2.3.2",
+    "typescript": "^4.3.5",
+    "yorkie": "^2.0.0"
+  }
+}
