@@ -8,7 +8,7 @@
     "dev": "UMI_UI=1 umi dev",
     "start": "MOCK=none umi dev",
     "build": "umi build",
-    "server": "node ./src/www",
+    "server": "node /www",
     "postinstall": "umi generate tmp",
     "prettier": "prettier --write '**/*.{js,jsx,tsx,ts,less,md,json}'",
     "test": "umi-test",
