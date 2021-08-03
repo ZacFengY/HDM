@@ -5,7 +5,7 @@
   "main": "index.js",
   "private": true,
   "scripts": {
-    "dev": "UMI_UI=1 umi dev",
+    "dev": "umi dev",
     "start": "MOCK=none umi dev",
     "build": "umi build",
     "server": "node /www",
