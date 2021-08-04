@@ -1,5 +1,5 @@
 function BasicLayout(props) {
-  return <>{props.children}</>;
+  return <>{props.children}</>
 }
 
-export default BasicLayout;
+export default BasicLayout

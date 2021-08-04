@@ -1,4 +1,5 @@
 import { Button, Form, Input, PageHeader, Select, Space, Table } from 'antd'
+import { history } from 'umi'
 import '../styles/index.less'
 
 const { Item } = Form
@@ -12,32 +13,32 @@ const Home = () => {
   // if (error) {
   //   return <div>{error.message}</div>
   // }
+
+  const newDataSourceClick = () => {
+    history.push('/detail')
+  }
+
   const columns = [
     {
       title: 'Data Source Name',
       dataIndex: 'name',
-      key: 'name',
       render: text => <a>{text}</a>,
     },
     {
       title: 'Domain',
       dataIndex: 'domain',
-      key: 'http://localhost:8000',
     },
     {
       title: 'Platform',
       dataIndex: 'platform',
-      key: 'platform',
     },
     {
       title: 'Table/Custom Query',
-      key: 'table',
       dataIndex: 'table',
     },
     {
       title: 'Status',
       dataIndex: 'status',
-      key: 'status',
     },
     {
       title: 'Action',
@@ -83,7 +84,7 @@ const Home = () => {
           </Item>
           <Button>Query</Button>
         </Form>
-        <Button>Onboard New Data Source</Button>
+        <Button onClick={newDataSourceClick}>Onboard New Data Source</Button>
         <Table className='table' columns={columns} dataSource={data} />
       </div>
     </main>
