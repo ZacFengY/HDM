@@ -1,4 +1,4 @@
-import { Button, Form, Input, PageHeader, Select, Space, Table, Tag } from 'antd'
+import { Button, Form, Input, PageHeader, Select, Space, Table } from 'antd'
 import '../styles/index.less'
 
 const { Item } = Form
@@ -14,48 +14,37 @@ const Home = () => {
   // }
   const columns = [
     {
-      title: 'Name',
+      title: 'Data Source Name',
       dataIndex: 'name',
       key: 'name',
       render: text => <a>{text}</a>,
     },
     {
-      title: 'Age',
-      dataIndex: 'age',
-      key: 'age',
+      title: 'Domain',
+      dataIndex: 'domain',
+      key: 'http://localhost:8000',
     },
     {
-      title: 'Address',
-      dataIndex: 'address',
-      key: 'address',
+      title: 'Platform',
+      dataIndex: 'platform',
+      key: 'platform',
     },
     {
-      title: 'Tags',
-      key: 'tags',
-      dataIndex: 'tags',
-      render: tags => (
-        <>
-          {tags.map(tag => {
-            let color = tag.length > 5 ? 'geekblue' : 'green'
-            if (tag === 'loser') {
-              color = 'volcano'
-            }
-            return (
-              <Tag color={color} key={tag}>
-                {tag.toUpperCase()}
-              </Tag>
-            )
-          })}
-        </>
-      ),
+      title: 'Table/Custom Query',
+      key: 'table',
+      dataIndex: 'table',
+    },
+    {
+      title: 'Status',
+      dataIndex: 'status',
+      key: 'status',
     },
     {
       title: 'Action',
       key: 'action',
       render: (text, record) => (
         <Space size='middle'>
-          <a>Invite {record.name}</a>
-          <a>Delete</a>
+          <a>View</a> | <a>Edit</a> | <a>Edit Schedule</a>
         </Space>
       ),
     },
@@ -63,25 +52,18 @@ const Home = () => {
 
   const data = [
     {
-      key: '1',
-      name: 'John Brown',
-      age: 32,
-      address: 'New York No. 1 Lake Park',
-      tags: ['nice', 'developer'],
+      name: 'xxx',
+      domain: 'Search',
+      platform: 'Hermes',
+      table: 'access_views.srch_test',
+      status: 'Ready',
     },
     {
-      key: '2',
-      name: 'Jim Green',
-      age: 42,
-      address: 'London No. 1 Lake Park',
-      tags: ['loser'],
-    },
-    {
-      key: '3',
-      name: 'Joe Black',
-      age: 32,
-      address: 'Sidney No. 1 Lake Park',
-      tags: ['cool', 'teacher'],
+      name: 'xxxxx',
+      domain: 'Search',
+      platform: 'Hermessss',
+      table: 'access_views.srch_test',
+      status: 'Not Ready',
     },
   ]
   return (

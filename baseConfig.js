@@ -1,6 +1,4 @@
-import { defineConfig } from 'umi'
-
-export default defineConfig({
+export default {
   title: 'HDM',
   favicon: '/favicon.ico',
   manifest: {
@@ -15,7 +13,6 @@ export default defineConfig({
   externals: {
     dac: 'window.dssAuthClient',
   },
-  // scripts: [{ src: '/dss-auth-client.js' }, { src: '/loginVerification.js' }],
   fastRefresh: {},
   dynamicImport: {},
   chainWebpack(config) {
@@ -31,4 +28,4 @@ export default defineConfig({
       },
     })
   },
-})
+}

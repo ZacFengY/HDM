@@ -16,7 +16,7 @@
     },
     "allowSyntheticDefaultImports": true
   },
-  "include": ["mock/**/*", "src/**/*", "config/**/*", ".umirc.ts", "typings.d.ts", "www"],
+  "include": ["mock/**/*", "src/**/*", "config/**/*", "baseConfig.js", "typings.d.ts", "www"],
   "exclude": [
     "node_modules",
     "lib",
