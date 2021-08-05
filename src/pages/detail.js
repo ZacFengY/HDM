@@ -2,10 +2,12 @@ import { useDynamicList, useToggle } from 'ahooks'
 import { Button, Input, PageHeader, Radio, Select, Table } from 'antd'
 import { useMemo } from 'react'
 import Title from '../components/Title'
+import ScheduleSettingModal from '../components/ScheduleSettingModal'
 import '../styles/detail.less'
 
 const Detail = () => {
   const [platform, { toggle }] = useToggle(1, 2)
+  const [scheduleSettingModalVisible, { toggle: changeVisible }] = useToggle()
   const {
     list: schemaTableData,
     push: addSchemaTableData,
@@ -192,7 +194,7 @@ const Detail = () => {
         </div>
         <Title text='Schedule Setting' />
         <div className='schedule-setting'>
-          <Button className='add' onClick={newScheduleColumn}>
+          <Button className='add' onClick={() => changeVisible(true)}>
             New Schedule
           </Button>
           <Table
@@ -205,8 +207,11 @@ const Detail = () => {
           />
         </div>
       </div>
+      <ScheduleSettingModal
+        visible={scheduleSettingModalVisible}
+        onCancel={() => changeVisible(false)}
+      />
     </div>
   )
 }
-
 export default Detail
