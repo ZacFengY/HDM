@@ -1,15 +1,22 @@
-# umi project
+# hdm project
 
 ## Getting Started
 
 Install dependencies,
 
 ```bash
-$ yarn
+$ npm i
 ```
 
-Start the dev server,
+Start the dev server 
 
 ```bash
-$ yarn start
+$ npm start
 ```
+
+with mock data
+
+```bash
+$ npm run dev
+```
+
