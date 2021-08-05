@@ -1,41 +1,134 @@
+import { useDynamicList, useToggle } from 'ahooks'
 import { Button, Input, PageHeader, Radio, Select, Table } from 'antd'
-import { useMemo, useState } from 'react'
+import { useMemo } from 'react'
 import Title from '../components/Title'
 import '../styles/detail.less'
 
-const Detail = props => {
-  const [platform, setPlatform] = useState(1)
-
-  const columns = useMemo(() => [
+const Detail = () => {
+  const [platform, { toggle }] = useToggle(1, 2)
+  const {
+    list: schemaTableData,
+    push: addSchemaTableData,
+    replace: changeSchemaTableData,
+    remove: removeSchemaTableData,
+    getKey: getSchemaDataKey,
+  } = useDynamicList([
     {
-      title: 'Column Name',
-      dataIndex: 'name',
+      name: 'CAL_DT',
+      format: 'DATE',
+      formula: 'SUM(ABD_FLAG)',
+      type: 1,
     },
+  ])
+  const {
+    list: scheduleTableData,
+    push: addScheduleTableData,
+    replace: changeScheduleTableData,
+    remove: removeScheduleTableData,
+    getKey: getScheduleDataKey,
+  } = useDynamicList([
     {
-      title: 'Format',
-      dataIndex: 'format',
-    },
-    {
-      title: 'Type',
-      dataIndex: 'Type',
-      render: () => <>s</>,
-    },
-    {
-      title: 'Formula',
-      dataIndex: 'formula',
-    },
-    {
-      title: 'Action',
-      key: 'action',
-      render: () => <a>Delete</a>,
+      type: 'Time Trigger',
+      frequency: 'Daily',
+      at: '23:00',
+      on: '',
     },
   ])
 
-  const platformOnChange = e => {
-    setPlatform(e.target.value)
+  const tableRadioChange = (e, data, index) => {
+    changeSchemaTableData(index, { ...data, type: e.target.value })
   }
 
-  const newColumn = () => {}
+  const platformOnChange = e => {
+    toggle(e.target.value)
+  }
+
+  const newSchemaColumn = () => {
+    addSchemaTableData({
+      name: 'SIT_ID',
+      format: 'INT',
+      formula: 'SUM(ABD_FLAG)',
+      type: 1,
+    })
+  }
+
+  const newScheduleColumn = () => {
+    addScheduleTableData({
+      type: 'Time Trigger',
+      frequency: 'Daily',
+      at: '23:00',
+      on: '',
+    })
+  }
+
+  const editScheduleTableData = index => {
+    // changeScheduleTableData()
+  }
+
+  const columns = useMemo(
+    () => ({
+      schemaColumns: [
+        {
+          title: 'Column Name',
+          dataIndex: 'name',
+        },
+        {
+          title: 'Format',
+          dataIndex: 'format',
+        },
+        {
+          title: 'Type',
+          dataIndex: 'type',
+          render: (text, record, index) => (
+            <Radio.Group onChange={e => tableRadioChange(e, record, index)} value={text}>
+              <Radio value={1}>Dimenson</Radio>
+              <Radio value={2}>Metric</Radio>
+            </Radio.Group>
+          ),
+        },
+        {
+          title: 'Formula',
+          dataIndex: 'formula',
+        },
+        {
+          title: 'Action',
+          key: 'action',
+          render: (text, record, index) => (
+            <a onClick={() => removeSchemaTableData(index)}>Delete</a>
+          ),
+        },
+      ],
+      scheduleColumns: [
+        {
+          title: 'Type',
+          dataIndex: 'type',
+        },
+        {
+          title: 'Frequency',
+          dataIndex: 'frequency',
+        },
+        {
+          title: 'At',
+          dataIndex: 'at',
+        },
+        {
+          title: 'On',
+          dataIndex: 'on',
+        },
+        {
+          title: 'Action',
+          key: 'action',
+          render: (text, record, index) => (
+            <>
+              <a onClick={() => removeScheduleTableData(index)}>Delete</a> |{' '}
+              <a onClick={() => editScheduleTableData(index)}>Edit</a>
+            </>
+          ),
+        },
+      ],
+    }),
+    [],
+  )
 
   return (
     <div className='detail'>
@@ -85,8 +178,31 @@ const Detail = props => {
         </div>
         <Title text='Schema Setting' />
         <div className='schema-setting'>
-          <Button onClick={newColumn}>New Column</Button>
-          <Table />
+          <Button className='add' onClick={newSchemaColumn}>
+            New Column
+          </Button>
+          <Table
+            rowKey={(data, index) => getSchemaDataKey(index)}
+            columns={columns.schemaColumns}
+            dataSource={schemaTableData}
+            pagination={{
+              hideOnSinglePage: true,
+            }}
+          />
+        </div>
+        <Title text='Schedule Setting' />
+        <div className='schedule-setting'>
+          <Button className='add' onClick={newScheduleColumn}>
+            New Schedule
+          </Button>
+          <Table
+            rowKey={(data, index) => getScheduleDataKey(index)}
+            columns={columns.scheduleColumns}
+            dataSource={scheduleTableData}
+            pagination={{
+              hideOnSinglePage: true,
+            }}
+          />
         </div>
       </div>
     </div>

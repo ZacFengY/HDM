@@ -1,9 +1,9 @@
 {
+  "experimentalDecorators": true,
   "compilerOptions": {
     "target": "esnext",
     "module": "esnext",
     "moduleResolution": "node",
-    "resolveJsonModule": true,
     "jsx": "react-jsx",
     "esModuleInterop": true,
     "sourceMap": true,
@@ -15,7 +15,7 @@
     },
     "allowSyntheticDefaultImports": true
   },
-  "include": ["mock/**/*", "src/**/*", "config/**/*", "baseConfig.js", "www"],
+  "include": ["mock/**/*", "src/**/*", "config/**/*", ".umirc.js", "www"],
   "exclude": [
     "node_modules",
     "lib",

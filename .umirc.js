@@ -1,5 +1,6 @@
 export default {
   title: 'HDM',
+  hash: true,
   favicon: '/favicon.ico',
   manifest: {
     fileName: 'manifest.json',
@@ -15,6 +16,7 @@ export default {
   },
   fastRefresh: {},
   dynamicImport: {},
+  esbuild: {},
   chainWebpack(config) {
     config.optimization.splitChunks({
       cacheGroups: {

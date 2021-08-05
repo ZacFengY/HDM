@@ -85,7 +85,7 @@ const Home = () => {
           <Button>Query</Button>
         </Form>
         <Button onClick={newDataSourceClick}>Onboard New Data Source</Button>
-        <Table className='table' columns={columns} dataSource={data} />
+        <Table rowKey={data => data.name} className='table' columns={columns} dataSource={data} />
       </div>
     </main>
   )
